@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jal-Mitra — Dispatch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand"><strong>JAL-MITRA</strong> <span id="coordLabel">Dispatch</span></div>
+      <div class="spacer"></div>
+      <div class="chip" id="status"><span class="dot"></span><span>Connecting</span></div>
+      <a class="btn btn-ghost" href="/dashboard" target="_blank">Dashboard &#8599;</a>
+    </header>
+
+    <main class="dispatch-wrap">
+      <section class="card">
+        <div class="card-title">Schedule a tanker delivery</div>
+        <p class="hint" style="margin: -4px 0 16px">
+          Nothing can be claimed until a delivery is scheduled. Scheduling broadcasts an SMS to
+          every registered household in the ward.
+        </p>
+
+        <form id="scheduleForm" class="form-grid">
+          <label class="field">
+            <span>Ward</span>
+            <select id="ward" required></select>
+          </label>
+          <label class="field">
+            <span>Tanker load (L)</span>
+            <input id="capacity" type="number" min="100" step="100" value="5000" required />
+          </label>
+          <label class="field">
+            <span>Arrives in (min)</span>
+            <input id="arrivalIn" type="number" min="1" value="60" required />
+          </label>
+          <label class="field">
+            <span>Arrival window (min)</span>
+            <input id="windowMin" type="number" min="15" value="60" required />
+          </label>
+          <label class="field">
+            <span>Claims close in (min)</span>
+            <input id="claimMin" type="number" min="1" value="30" required />
+          </label>
+          <div class="field" style="grid-column: 1 / -1">
+            <button class="btn btn-primary" type="submit" style="padding: 13px 18px">
+              Schedule &amp; broadcast to ward
+            </button>
+          </div>
+        </form>
+
+        <div class="preview" id="preview">
+          <small>Broadcast preview</small>
+          <p id="previewText">Choose a ward to see the message residents will receive.</p>
+        </div>
+
+        <div class="alert err" id="formErr"></div>
+      </section>
+
+      <section class="card">
+        <div class="card-title">Deliveries</div>
+        <div id="deliveries" class="delivery-list">
+          <p class="hint">No deliveries scheduled yet.</p>
+        </div>
+      </section>
+    </main>
+
+    <script src="/js/ws-client.js"></script>
+    <script src="/js/dispatch.js"></script>
+  </body>
+</html>

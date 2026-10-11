@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jal-Mitra — Driver</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body class="theme-light">
+    <header class="topbar">
+      <div class="brand"><strong>JAL-MITRA</strong> <span>Driver</span></div>
+      <div class="spacer"></div>
+      <div class="chip" id="tankChip"><span class="dot"></span><span>Tanker —</span></div>
+      <div class="chip" id="status"><span class="dot"></span><span>Connecting</span></div>
+    </header>
+
+    <main class="driver-wrap">
+      <!-- 1. SCAN / PIN -->
+      <section class="screen active" id="screenScan">
+        <h1 style="font-size: 25px; margin-bottom: 4px">Scan resident QR</h1>
+        <p class="hint" style="margin: 0 0 8px">Or type the 4-digit PIN below. Both work.</p>
+        <p class="serving" id="serving">Loading delivery&hellip;</p>
+
+        <div class="scan-box" id="reader">
+          <div id="camMsg">Starting camera&hellip;</div>
+        </div>
+        <button class="btn" id="camToggle" style="width: 100%; margin-top: 10px">
+          Start camera
+        </button>
+
+        <h2 style="font-size: 18px; margin: 26px 0 6px">Manual PIN entry</h2>
+        <div class="pin-entry">
+          <input
+            id="pin"
+            inputmode="numeric"
+            maxlength="4"
+            placeholder="----"
+            autocomplete="off"
+          />
+          <button class="btn btn-primary" id="checkBtn">Check</button>
+        </div>
+
+        <div class="keypad" id="keypad">
+          <button type="button" data-k="1">1</button>
+          <button type="button" data-k="2">2</button>
+          <button type="button" data-k="3">3</button>
+          <button type="button" data-k="4">4</button>
+          <button type="button" data-k="5">5</button>
+          <button type="button" data-k="6">6</button>
+          <button type="button" data-k="7">7</button>
+          <button type="button" data-k="8">8</button>
+          <button type="button" data-k="9">9</button>
+          <button type="button" data-k="clear">Clear</button>
+          <button type="button" data-k="0">0</button>
+          <button type="button" data-k="del">&#9003;</button>
+        </div>
+
+        <div class="alert err" id="scanErr"></div>
+      </section>
+
+      <!-- 2. CONFIRM -->
+      <section class="screen" id="screenConfirm">
+        <div class="confirm-card">
+          <div class="who" id="cName">—</div>
+          <div class="meta" id="cMeta">—</div>
+
+          <div class="approved">
+            <small>Approved quota</small>
+            <strong class="num"><span id="cLitres">0</span>L</strong>
+          </div>
+
+          <div class="flag-note" id="cFlag" style="display: none"></div>
+
+          <button class="btn btn-primary" id="startBtn" style="width: 100%; font-size: 21px; padding: 20px">
+            Start Dispense
+          </button>
+          <button class="btn" id="backBtn" style="width: 100%; margin-top: 10px">Cancel</button>
+        </div>
+      </section>
+
+      <!-- 3. DISPENSING -->
+      <section class="screen" id="screenDispense">
+        <div class="confirm-card">
+          <div class="who" id="dName">—</div>
+          <div class="meta" id="dMeta">Dispensing&hellip;</div>
+
+          <div class="counter">
+            <div class="big num"><span id="dServed">0</span><em>/<span id="dQuota">0</span> L</em></div>
+            <div class="sub"><span id="dLeft">0</span> L remaining</div>
+          </div>
+
+          <div class="meter"><span id="dBar"></span></div>
+
+          <button class="btn btn-danger" id="stopBtn" style="width: 100%; font-size: 19px; padding: 18px">
+            Stop
+          </button>
+        </div>
+      </section>
+
+      <!-- 4. DONE -->
+      <section class="screen" id="screenDone">
+        <div class="confirm-card" style="text-align: center">
+          <div class="done-mark" id="doneMark">&#10003;</div>
+          <div class="who" id="doneTitle">Dispense complete</div>
+          <div class="meta" id="doneMeta">—</div>
+          <div class="approved">
+            <small>Litres served</small>
+            <strong class="num"><span id="doneLitres">0</span>L</strong>
+          </div>
+          <button class="btn btn-primary" id="nextBtn" style="width: 100%; font-size: 20px; padding: 18px">
+            Next household
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js"></script>
+    <script src="/js/ws-client.js"></script>
+    <script src="/js/driver.js"></script>
+  </body>
+</html>

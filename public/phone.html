@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jal-Mitra — Resident Phone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="phone-stage">
+      <div class="phone">
+        <div class="phone-head">
+          <div class="phone-avatar">&#128167;</div>
+          <div class="phone-head-text">
+            <strong>JAL-MITRA</strong>
+            <small>SMS / WhatsApp &middot; 1800-JAL</small>
+          </div>
+        </div>
+
+        <!-- Filled by phone.js from /api/resident/inbox. .bubble uses
+             white-space: pre-wrap, so never indent bubble markup here. -->
+        <div class="chat" id="chat"></div>
+
+        <form class="phone-input" id="sendForm">
+          <input
+            id="msg"
+            type="text"
+            placeholder="Type a message"
+            autocomplete="off"
+            value="WATER 4"
+          />
+          <button type="submit" title="Send">&#10148;</button>
+        </form>
+      </div>
+
+      <aside class="phone-side">
+        <div class="card">
+          <div class="card-title">Sending from</div>
+          <select id="sender"></select>
+          <p class="hint" id="senderInfo" style="margin: 10px 0 0"></p>
+          <p class="hint" id="wardState" style="margin: 6px 0 0; color: var(--cyan)"></p>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Quick messages</div>
+          <div class="quick">
+            <button type="button" data-m="WATER 4">WATER 4</button>
+            <button type="button" data-m="WATER 6">WATER 6</button>
+            <button type="button" data-m="PAANI 3">PAANI 3</button>
+            <button type="button" data-m="WATER 12">WATER 12</button>
+            <button type="button" data-m="hello">hello</button>
+          </div>
+          <p class="hint" style="margin: 12px 0 0">
+            This page posts to <code>POST /api/sms/incoming</code> &mdash; the exact endpoint
+            Twilio calls. Only the telecom hop is simulated.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Stage controls</div>
+          <button class="btn btn-ghost" id="resetBtn" style="width: 100%">
+            Reset demo (clears all deliveries)
+          </button>
+          <p class="hint" style="margin: 10px 0 0">
+            <a href="/dispatch" target="_blank">Dispatch &#8599;</a> &middot;
+            <a href="/driver" target="_blank">Driver &#8599;</a> &middot;
+            <a href="/dashboard" target="_blank">Dashboard &#8599;</a>
+          </p>
+        </div>
+      </aside>
+    </div>
+
+    <script src="/js/ws-client.js"></script>
+    <script src="/js/phone.js"></script>
+  </body>
+</html>

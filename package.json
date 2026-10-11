@@ -1,0 +1,27 @@
+{
+  "name": "jal-mitra",
+  "version": "1.0.0",
+  "description": "Last-Mile Water Quota & Distribution Protocol",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "aws:setup": "node scripts/aws-setup.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-cloudwatch": "^3.1149.0",
+    "@aws-sdk/client-dynamodb": "^3.1149.0",
+    "@aws-sdk/client-iot-data-plane": "^3.1149.0",
+    "@aws-sdk/client-s3": "^3.1149.0",
+    "@aws-sdk/client-sns": "^3.1149.0",
+    "@aws-sdk/lib-dynamodb": "^3.1149.0",
+    "@aws-sdk/s3-request-presigner": "^3.1149.0",
+    "dotenv": "16.4.5",
+    "express": "4.19.2",
+    "qrcode": "1.5.4",
+    "ws": "8.18.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,52 @@
+# Never read: huge, generated, or secret
+
+# Dependencies & lockfiles
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Build output & caches
+dist/
+build/
+.cache/
+coverage/
+
+# Logs & runtime data
+logs/
+*.log
+*.sqlite
+*.sqlite3
+*.db
+data/
+*.pid
+
+# Binary / media assets
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.ico
+*.svg
+*.mp4
+*.mp3
+*.pdf
+*.zip
+*.woff
+*.woff2
+*.ttf
+
+# Vendored third-party libs
+public/vendor/
+
+# Scratch
+scratch/
+tmp/
+.ngrok*
